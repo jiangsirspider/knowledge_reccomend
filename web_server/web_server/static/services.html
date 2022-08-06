@@ -5,7 +5,6 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-{% load static from static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +17,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic" rel="stylesheet" type="text/css">
@@ -39,11 +38,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="top-nav">
 						<span class="menu"><img src="images/menu.png" alt=" " /></span>
 						<ul class="nav">
-							<li class="active"><a href="http://127.0.0.1:8888/knowledge_graph/">首页</a></li>
-							<li><a href="#" id="jibing">疾病自诊</a></li>
-							<li><a href="#" id="yisheng">医生推荐</a></li>
-<!--							<li><a href="#">科普知识</a></li>-->
-<!--							<li><a href="#">联系我们</a></li>-->
+							<li><a href="index.html">首页</a></li>
+							<li class="active"><a href="services.html">疾病自诊</a></li>
+							<li><a href="news.html">医生推荐</a></li>
+							<li><a href="gallery.html">科普知识</a></li>
+							<li><a href="contact.html">联系我们</a></li>
 						</ul>
 								<!-- script-for-menu -->
 								 <script>
@@ -67,24 +66,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3 class="title">疾病自诊</h3>
 			<p class="et">根据您的症状描述，我们为您做出以下诊断结果，患病概率也已标明如下</p>
 			<div class="grid_3 grid_4">
-				<h3 class="hdg" >我的描述：</h3>
-				<p>
-					{{raw_text}}
-				</p>
-				<h3 class="hdg">我的症状：</h3>
-				<p>
-					{{entity}}
-				</p>
-				<h3 class="hdg">诊断结果：</h3>
+				<h3 class="hdg">诊断结果</h3>
 				<div class="bs-example">
 					<table class="table">
 						<tbody>
-							{%for d,p,i1,i2,i3,i4 in result%}
-								<tr>
-								<td><h1 id="h3.-bootstrap-heading"><a href="#" title="{{i1}}  就诊科室：{{i2}}; 多发人群：{{i3}}">{{d}}</a></h1></td>
-								<td class="type-info">患病概率：{{p}}</td>
-								</tr>
-							{% endfor %}
+							<tr>
+								<td><h1 id="h1.-bootstrap-heading"><a href="news.html">h1. 疾病一</a></h1></td>
+								<td class="type-info">患病概率</td>
+							</tr>
+							<tr>
+								<td><h2 id="h2.-bootstrap-heading"><a href="news.html">h2. 疾病二</a></h2></td>
+								<td class="type-info">患病概率</td>
+							</tr>
+							<tr>
+								<td><h3 id="h3.-bootstrap-heading"><a href="news.html">h3. 疾病三</a></h3></td>
+								<td class="type-info">患病概率</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -148,12 +145,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- for bootstrap working -->
 		<script src="js/bootstrap.js"> </script>
 <!-- //for bootstrap working -->
-			<script>
-				(function() {
-					$("#jibing").attr('href',window.location.href.replace('recommend','diagnosis'));
-					$("#yisheng").attr('href',window.location.href.replace('diagnosis','recommend'));
-				}());
-			</script>
 		</div>
 		</div>
 </body>

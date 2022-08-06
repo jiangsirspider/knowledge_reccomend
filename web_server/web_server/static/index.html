@@ -5,7 +5,6 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-{% load static from static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +17,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 <link href="http://fonts.googleapis.com/css?" family="Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic" rel="stylesheet" type="text/css">
@@ -37,13 +36,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					   <a href="index.html"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i>Medical Clinic<span>We Work For Your Health&nbsp;&nbsp;</span></a>
 					</div>
 					<div class="top-nav">
-						<span class="menu"><img src="{% static 'images/menu.png' %}" alt=" " /></span>
+						<span class="menu"><img src="images/menu.png" alt=" " /></span>
 						<ul class="nav">
-							<li class="active"><a href="http://127.0.0.1:8888/knowledge_graph/">首页</a></li>
-							<li><a href="#">疾病自诊</a></li>
-							<li><a href="#">医生推荐</a></li>
-<!--							<li><a href="#">科普知识</a></li>-->
-<!--							<li><a href="#">联系我们</a></li>-->
+							<li class="active"><a href="index.html">首页</a></li>
+							<li><a href="services.html">疾病自诊</a></li>
+							<li><a href="news.html">医生推荐</a></li>
+							<li><a href="gallery.html">科普知识</a></li>
+							<li><a href="contact.html">联系我们</a></li>
 						</ul>
 								<!-- script-for-menu -->
 								 <script>
@@ -59,11 +58,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 <!-- //header -->
 			<div class="banner-info">
-
-				<form action="#">
-					<input type="text" id="raw_text" value="请输入您的症状描述..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入您的症状描述...';}" required="">
-					<input type="submit" id="sub1" value="疾病自诊" >
-					<input type="submit" id="sub2" value="医生推荐" >
+				<form action="services.html">
+					<input type="text" value="请输入您的症状描述..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入您的症状描述...';}" required="">
+					<input type="submit" value="搜索" >
 				</form>
 			</div>
 			<div class="banner-info-grids">
@@ -122,14 +119,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="banner-bottom-grid">
 			<div class="banner-bottom-left">
 				<div class="banner-bottom-left1">
-					<h3>01. 医生推荐</h3>
-					<p>我们会根据您的症状描述为您推荐最适合您的医生，保证您问诊过程效果最佳。</p>
+					<h3>01. 疾病自述</h3>
+					<p>您近期身体出现不适现象，却不知自己患了什么病，可在本平台描述具体症状。如头疼、发热、恶心等。</p>
 					<div class="more m1">
 						<a href="single.html">更多消息</a>
 					</div>
 				</div>
 			</div>
-
 			<div class="banner-bottom-right">
 				<div class="banner-bottom-right1">
 					<h3>02. 疾病自诊</h3>
@@ -144,18 +140,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="banner-bottom-grid">
 			<div class="banner-bottom-left banner-bottom-lft1">
 				<div class="banner-bottom-left1">
-					<h3>03. 疾病自述</h3>
-					<p>您近期身体出现不适现象，却不知自己患了什么病，可在本平台描述具体症状。如头疼、发热、恶心等。</p>
+					<h3>03. 医生推荐</h3>
+					<p>我们会根据您的症状描述为您推荐最适合您的医生，保证您问诊过程效果最佳。</p>
 					<div class="more m1">
 						<a href="single.html">更多消息</a>
 					</div>
 				</div>
 			</div>
-			</div>
 			<div class="banner-bottom-right banner-bottom-rit1">
 				<div class="banner-bottom-right1">
-					<h3>04. 更多科普知识</h3>
-					<p>想要了解更多科普知识请点击下方链接，更多科普信息请点击更多消息查看。</p>
+					<h3>04. 更多医生信息</h3>
+					<p>想要了解更多咨询请点击下方链接，更多医生信息请点击更多消息查看。</p>
 					<div class="more m1">
 						<a href="single.html">更多消息</a>
 					</div>
@@ -172,7 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- testimonials -->
 	<div class="主要科室">
 		<div class="container">
-			<h3>疾病科普</h3>
+			<h3>主要科室</h3>
 			<section class="slider">
 				<div class="flexslider">
 					<ul class="slides">
@@ -180,7 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="testimonials-grid">
 								<div class="col-md-6 testimonials-grid-left">
 									<div class="testimonials-grid-left1">
-										<img src="{% static 'images/30.jpg' %}" alt=" " class="img-responsive" />
+										<img src="images/30.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="testimonials-grid-right1">
 										<p><span>高血压</span>（hypertension）是指以体循环动脉血压（收缩压和/或舒张压）增高为主要特征（收缩压≥140毫米汞柱，舒张压≥90毫米汞柱），可伴有心、脑、肾等器官的功能或器质性损害的临床综合征。</p>
@@ -189,7 +184,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-6 testimonials-grid-left">
 									<div class="testimonials-grid-left1">
-										<img src="{% static 'images/31.jpg' %}" alt=" " class="img-responsive" />
+										<img src="images/31.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="testimonials-grid-right1">
 										<p><span>冠心病</span>，全称冠状动脉粥样硬化性心脏病，有时也叫缺血性心脏病，是指冠状动脉粥样硬化导致心肌缺血、缺氧而引起的心脏病。</p>
@@ -202,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="testimonials-grid">
 								<div class="col-md-6 testimonials-grid-left">
 									<div class="testimonials-grid-left1">
-										<img src="{% static 'images/32.jpg' %}" alt=" " class="img-responsive" />
+										<img src="images/32.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="testimonials-grid-right1">
 										<p><span>糖尿病</span>是一组以高血糖为特征的代谢性疾病。高血糖则是由于胰岛素分泌缺陷或其生物作用受损，或两者兼有引起。长期存在的高血糖，导致各种组织，特别是眼、肾、心脏、血管、神经的慢性损害、功能障碍。</p>
@@ -211,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-6 testimonials-grid-left">
 									<div class="testimonials-grid-left1">
-										<img src="{% static 'images/33.jpg' %}" alt=" " class="img-responsive" />
+										<img src="images/33.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="testimonials-grid-right1">
 										<p><span>儿科</span>儿科是全面研究小儿时期身心发育、保健以及疾病防治的综合医学科学。凡涉及儿童和青少年时期的健康与卫生问题都属于儿科范围。其医治的对象处于生长发育期。</p>
@@ -224,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="testimonials-grid">
 								<div class="col-md-6 testimonials-grid-left">
 									<div class="testimonials-grid-left1">
-										<img src="{% static 'images/34.jpg' %}" alt=" " class="img-responsive" />
+										<img src="images/34.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="testimonials-grid-right1">
 										<p><span>皮肤科</span>皮肤科属于外科，主要治疗各种皮肤病，常见皮肤病有牛皮癣 、 疱疹 、酒渣鼻 、脓疱疮 、化脓菌感染 、疤痕 、癣 、鱼鳞病 、腋臭 、青春痘等。</p>
@@ -233,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-6 testimonials-grid-left">
 									<div class="testimonials-grid-left1">
-										<img src="{% static 'images/35.jpg' %}" alt=" " class="img-responsive" />
+										<img src="images/35.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="testimonials-grid-right1">
 										<p><span>妇产科</span>妇产科是临床医学四大主要学科之一，主要研究女性生殖器官疾病的病因、病理、诊断及防治，妊娠、分娩的生理和病理变化，高危妊娠及难产的预防和诊治，女性生殖内分泌，计划生育及妇女保健等。</p>
@@ -320,27 +315,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //footer -->
 <!-- for bootstrap working -->
 		<script src="js/bootstrap.js"> </script>
-
-		<script>
-			$("#sub1").click(function () {
-			let raw_text = $("#raw_text").val();
-<!--			alert(raw_text);-->
-            let param = {
-                    "raw_text": raw_text,
-                };
-            let url = "http://127.0.0.1:8888/knowledge_graph/diagnosis?raw_text="+raw_text;
-            window.open(url);
-			});
-			$("#sub2").click(function () {
-			let raw_text = $("#raw_text").val();
-<!--			alert(raw_text);-->
-            let param = {
-                    "raw_text": raw_text,
-                };
-            let url = "http://127.0.0.1:8888/knowledge_graph/recommend?raw_text="+raw_text;
-            window.open(url);
-			});
-		</script>
 <!-- //for bootstrap working -->
 </body>
 </html>

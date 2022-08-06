@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(253, 233, 235);
+    background: url(b.jpg);
+}
+
+.box {
+    margin: 20px auto;
+    padding-bottom: 40px;
+    width: 96vw;
+    mix-height: 240vh;
+    border-radius: 30px;
+    background-color: rgb(54 54 54);
+}
+
+.contain {
+    height: 420px;
+    border: 1px solid black;
+    display: flex;
+    margin: 20px;
+}
+
+.bb {
+    margin: 20px auto;
+}
+
+img {
+    width: 200px;
+    height: 300px;
+    margin: 4% 0;
+}
+
+/*图片*/
+.l {
+    border-radius: 15%;
+    position: absolute;
+    left: 6%;
+}
+
+.r {
+    border-radius: 15%;
+    position: absolute;
+    right: 6%;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 100px;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    font-size:15px
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 30px;
+    padding-top:20px;
+    align-items: center;
+}
+.score h2{
+    font-size: 30px;
+}
+
+#left {
+    margin: 10px 60px;
+    height: 70px;
+    width: 190px;
+    border: 2px dotted white;
+    border-radius: 15px;
+    line-height: 70px;
+    text-align: center;
+    font-size:24px;
+}
+
+#right {
+    margin: 10px 60px;
+    height: 70px;
+    width: 190px;
+    border: 2px dotted white;
+    border-radius: 15px;
+    line-height: 70px;
+    text-align: center;
+    font-size:24px;
+}
+
+#left,#right:hover{
+    cursor: pointer;
+}
+
+.num{
+    color:white;
+    position:relative;
+    margin-top:20px;
+    height:30px;
+    font-size:26px;
+}
+
+.left_score{
+    display: inline-block;
+    position: absolute;
+    left:80px
+}
+
+.right_score{
+    display: inline-block;
+    position: absolute;
+    right:130px
+}
+
+#windo{
+    width: 70vw;
+    height:40vh;
+    background-color: rgba(0,0,0,.8);
+    border:1.2px solid rgb(175, 175, 175);
+    border-radius: 20px;
+    position: fixed;
+    top:20vh;
+    left:12vw;
+    z-index:10;
+    color:white;
+    font-size:20px;
+    padding:40px;
+    display: none;
+    overflow: scroll;
+}
+
+#windo p{
+    margin:30px 25px;
+    color: lightgrey; 
+}
+
+#windo div{
+    height:50px;
+}
+
+#windo button{
+    width: 100px;
+    height: 30px;
+    position: relative;
+    left:750px;
+    bottom:0
+}

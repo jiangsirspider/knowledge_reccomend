@@ -65,10 +65,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="menu"><img src="{% static 'images/menu.png' %}" alt=" " /></span>
 						<ul class="nav">
 							<li class="active"><a href="http://127.0.0.1:8888/knowledge_graph/">首页</a></li>
-							<li><a href="#">疾病自诊</a></li>
-							<li><a href="#">医生推荐</a></li>
-							<li><a href="#">科普知识</a></li>
-							<li><a href="#">联系我们</a></li>
+							<li><a href="#" id="jibing">疾病自诊</a></li>
+							<li><a href="#" id="yisheng">医生推荐</a></li>
+<!--							<li><a href="#">科普知识</a></li>-->
+<!--							<li><a href="#">联系我们</a></li>-->
 						</ul>
 								<!-- script-for-menu -->
 								 <script>
@@ -97,18 +97,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h4>推荐医生</h4>
 							<a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>{{forloop.counter}}</a>
 						</div>
-						<div class="blog-leftr">
+						<div class="blog-leftr container ">
 							<div class="blog-right">
-							<h3>{{doctor.doctorName}}</h3>
+
+								<h3 style="display: inline-block;">{{doctor.doctorName |slice:"1"}} *
+
+								<button type="button" class="btn btn-success add_doctor" id="{{doctor.doctor_id}}">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+									  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+									</svg>对比
+								</button>
+								</h3>
+
 
 						</div>
-							<div class="contain" id="textcontain">
+							<div class="contain" id="textcontain{{forloop.counter}}">
 
 								<p>个人简介：
 									{{doctor.introduction}}</p>
 								<p>
-								<div class="open-btn" id="btncontain">
-									<a onclick="showMore()">查看更多</a>
+								<div class="open-btn" id="btncontain{{forloop.counter}}">
+									<a onclick="showMore{{forloop.counter}}()">查看更多</a>
 								</div>
 							</div>
 
@@ -142,6 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					</div>
 {% endfor %}
+		<div style="display:none" id="cart"></div>
 		<div class="footer">
 		<div class="container">
 			<div class="footer-grids">
@@ -201,11 +211,81 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/bootstrap.js"> </script>
 		<script>
         // 点击显示更多按钮
-			function showMore() {
-				$("#textcontain").height("auto");//取消文字容器高度限制
-				$("#btncontain").hide();//隐藏查看更多按钮
-			}
-    </script>
+        {%for doctor in result%}
+			eval('function showMore{{forloop.counter}}() {$("#textcontain{{forloop.counter}}").height("auto");$("#btncontain{{forloop.counter}}").hide();}');
+		{% endfor %}
+		(function() {
+        	$("#jibing").attr('href',window.location.href.replace('recommend','diagnosis'));
+        	$("#yisheng").attr('href',window.location.href.replace('diagnosis','recommend'));
+    	}());
+    	</script>
+		<script>
+			//点击对比按钮
+			let $cart = $("#cart");
+			let $add_doctor = $(".add_doctor");
+			$add_doctor.click(function (){
+				// 已加入的医生
+				let doctor_added = eval($cart.html());
+
+				// 当前点击医生id
+				let $id = $(this).attr("id").toString();
+
+				// 最多添加两个
+
+				if (typeof(doctor_added) != 'undefined' && doctor_added.length >= 2 && $(this).html() != '已加入'){
+					alert("最多将两位医生加入对比");
+					return false
+					}
+
+				// 是否需要移除
+				if ($(this).html() == '已加入'){
+					// 移除当前医生
+					doctor_added.splice($.inArray( $id ,doctor_added),1);
+					// 重新写入
+					$cart.html('['+doctor_added.join()+']');
+					// 更换
+					$(this).html('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/></svg>对比');
+					$(this).removeClass("btn-warning");
+					$(this).addClass("btn-success");
+				}
+				else{
+					// 添加医生
+					if (typeof(doctor_added) == 'undefined'){
+						$cart.html('['+$id+']');
+					}
+					else{
+						doctor_added.push($id);
+						$cart.html('['+doctor_added.join()+']');
+					};
+					// 更换
+					$(this).html('已加入');
+					$(this).removeClass("btn-success");
+					$(this).addClass("btn-warning");
+				}
+
+				// 跳转对比页面
+				if (typeof(doctor_added) != 'undefined' && doctor_added.length == 2 && $(this).html() == '已加入'){
+					let url = "http://127.0.0.1:8888/knowledge_graph/scores?chart=radar&doctor_id="+'['+doctor_added.join()+']';
+            		window.open(url);
+				}
+
+			});
+
+
+<!--			let add_doctor = $(".add_doctor");-->
+<!--        $add_doctor.click(function (){-->
+<!--			var $id = $(this).attr("id"));-->
+<!--			var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val()-->
+<!--			var params = {-->
+<!--				"curr_id": $id,-->
+<!--				"doctors": {{result}},-->
+<!--				"csrfmiddlewaretoken": csrfmiddlewaretoken-->
+<!--			}-->
+<!--			$.post("/knowledge_graph/scores/", params, function (data){-->
+<!--				return 'success'-->
+<!--            })-->
+
+		</script>
 <!-- //for bootstrap working -->
 </body>
 </html>

@@ -21,6 +21,7 @@ from entity_extract import bert_ner_model
 from return_answer.modules import semantic_parser
 import pandas as pd
 from recommend.try_minhash import recommend, path_pre, get_forest
+from recommend import doctor_find
 
 
 args = config.Args().get_parser()
@@ -170,4 +171,5 @@ DF =pd.read_csv('../../recommend/haodaifu/doctors_gaoxueya.csv')
 RECOMMEND = recommend
 PATHPRE = path_pre
 GETFOREST = get_forest
+DOCTOR_FIND = doctor_find
 

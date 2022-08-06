@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./lib/d3.js"></script>
+    <!-- <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script> -->
+    <!-- <script src="../d3.js" type='module'></script> -->
+    <title>Document</title>
+    <link rel="stylesheet" href="./box.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="score">
+            <div id="left" onclick="window.location.href='../test.html'">return</div>
+            <h2>Ronaldo VS Messi</h2>
+            <div id="right">introduction</div>
+        </div>
+        <div class='num'>
+            <!-- 需要改动 -->
+            <div class='left_score'>score:93</div>
+            <div class='right_score'>score:94</div>
+        </div>
+        <div class="contain">
+            <img src="./pic/cri_16.png" alt="" class='l'>
+            <div class="picture"></div>
+            <img src="./pic/messi_16.png" alt="" class='r'>
+        </div>
+        <div class='btn'>
+            <!-- 需要改动 -->
+            <button onclick="window.location.href = 'fifa15.html'">last year</button>
+            <button onclick="window.location.href = 'fifa17.html'">next year</button>
+        </div>
+
+        <div id="windo">
+            <p>Hi there! This is the radar part of our project. 
+                The "return" button in the upper left corner takes you back to the main page. 
+                Click the "introduction" button in the upper right can read the instructions again. 
+                In the center of the page is a radar chart that allows you to compare each player's stats. 
+                Click on the rect legend of the radar chart to see a detailed numerical comparison of the two players. 
+                The "last year" button in the lower left corner helps you go back to the last year 
+                and the "next year" button in the lower right corner helps you go back to the next year.</p>
+            <div><button id="windo_btn">Read over</button></div>
+    </div>
+    <script src='./js/fifa16.js' type="module"></script>
+    <script>
+        let left=document.getElementById("left")
+        let right=document.getElementById("right")
+        let windo_btn = document.getElementById('windo_btn');
+        let windo = document.getElementById('windo');
+        left.onclick=function(){
+            window.location.href='../test.html';
+        }
+        right.onclick=function(){
+            windo.style = "display:block"
+        }
+        windo_btn.onclick = function () {
+            windo.style = "display:none"
+        }
+
+    </script>
+</body>
+
+</html>

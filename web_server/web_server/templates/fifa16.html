@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+{% load static from static %}
+<html lang="en">
+
+<head>
+<title>Medical Clinic a Medical Hospital Category Flat Bootstarp Resposive Website Template | news :: 斛斗驿站</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Medical Clinic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!--<script src="{% static 'js/d3.js' %}"></script>-->
+<link rel="stylesheet" href="{% static 'css/box.css' %}">
+<!-- //for-mobile-apps -->
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<!-- //js -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+<style type="text/css">
+#windo button {
+    width: 120px;
+    height: 50px;
+    }
+#windo {
+    height: 30vh;
+    }
+.overflow{
+    width:220px;
+    -webkit-line-clamp: 3;
+    overflow:hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+            }
+.label{
+font-size: 100%;
+}
+</style>
+{% if chart == "radar" %}
+    <script src="https://d3js.org/d3.v5.js"></script>
+{% else %}
+    <script src="https://d3js.org/d3.v4.js"></script>
+{% endif %}
+<style>
+:root {
+    --background-color: #2c3e50;
+    --border-color: #7591AD;
+    --text-color: #34495e;
+    --color1: #EC3E27;
+    --color2: #fd79a8;
+    --color3: #0984e3;
+    --color4: #00b894;
+    --color5: #fdcb6e;
+    --color6: #e056fd;
+    --color7: #F97F51;
+    --color8: #BDC581;
+    --a_border_color: #86a3b3;
+    --h2_border_color: #8ea2b8;
+    --a_hover_background_color: #86a3b3;
+    --font_color: #e8f6fd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
+}
+
+.card {
+    /* flex布局下元素不按比例缩放 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+    width: 300px;
+    height: 450px;
+    overflow: hidden;
+    margin: 20px;
+    background-color: var(--border-color);
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* flex 子元素 纵向排列 */
+    flex-direction: column;
+    /* 增加个阴影 */
+    box-shadow: 0 0 30px #2c2c2c;
+    /* 同意给字体价格颜色 */
+    color: var(--font_color)
+}
+
+.photo {
+    position: absolute;
+    /* 默认为放大 */
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    border-radius: 0%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.photo::before {
+    /* 通过before增加渐变背景实现遮罩，让文字默认看起来清晰一些 */
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, #333, transparent);
+}
+.card:hover .photo::before{
+    /* 缩小时隐藏 */
+    display: none;
+}
+
+.photo img {
+    /* 图片高宽均为100% */
+    /* 然后按照cover缩放，裁切长边 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover .photo {
+    /* 鼠标移上变小 */
+    width: 120px;
+    height: 120px;
+    top: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #111;
+}
+
+h1 {
+    position: absolute;
+    top: 380px;
+    transition: 0.5s;
+}
+
+.card:hover h1 {
+    position: absolute;
+    top: 170px;
+}
+
+h2 {
+    margin-top: 220px;
+    width: 80%;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--h2_border_color);
+}
+
+p {
+    width: 90%;
+    /* 段落缩进2个字符大小 */
+    text-indent: 2em;
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    color:white;
+}
+
+a {
+    color: var(--font_color);
+    text-decoration: none;
+    padding: 12px 36px;
+    border: 1px solid var(--a_border_color);
+    border-radius: 8px;
+}
+
+a:hover {
+    color: #Fff;
+    background-color: var(--a_hover_background_color);
+}
+</style>
+
+<style>
+.bar text{
+font-size: 14px;
+color: white;
+}
+<!--.axis .domain {-->
+<!--  display: none;-->
+<!--}-->
+<!--.bar {-->
+<!--  fill: steelblue;-->
+<!--}-->
+</style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="score">
+
+        {% if chart == "radar" %}
+            <div id="left" onclick="#">Bar charts</div>
+        {% else %}
+            <div id="left" onclick="#">Radar charts</div>
+        {% endif %}
+
+
+
+            <h2>{{doctors.0.doctorName}}和{{doctors.1.doctorName}}医生的服务指标对比</h2>
+            <div id="right">introduction</div>
+        </div>
+        <div class='num'>
+            <!-- 需要改动 -->
+            <div class='left_score'>score:{{doctors.0.hot_num}}</div>
+            <div class='right_score'>score:{{doctors.1.hot_num}}</div>
+        </div>
+        <div class="contain">
+
+            <div class="card">
+                <div class="photo">
+                    <img src="{% static 'images/yishen.jpg' %}" style="margin: 0">
+                </div>
+                <h1>{{doctors.0.doctorName}}</h1>
+                <h2>{{doctors.0.doctor_title}}</h2>
+                <p class="overflow">{{doctors.0.introduction}}</p>
+                <a href="#">了解更多</a>
+            </div>
+                {% if chart == "radar" %}
+                    <div class="picture"></div>
+                {% else %}
+                    <div class="bb bar">
+                        <svg width="800" height="400"></svg>
+                    </div>
+
+                {% endif %}
+<!--           <div class="picture"></div>-->
+<!--            <div id="my_dataviz"></div>-->
+            <div class="card">
+                <div class="photo">
+                    <img src="{% static 'images/yishen.jpg' %}" style="margin: 0">
+                </div>
+                <h1>{{doctors.1.doctorName}}</h1>
+                <h2>{{doctors.1.doctor_title}}</h2>
+                <p class="overflow">{{doctors.1.introduction}}</p>
+                <a href="#">了解更多</a>
+            </div>
+
+        </div>
+<!--        <div class='btn'>-->
+<!--            &lt;!&ndash; 需要改动 &ndash;&gt;-->
+<!--            <button onclick="window.location.href = 'fifa15.html'">last year</button>-->
+<!--            <button onclick="window.location.href = 'fifa17.html'">next year</button>-->
+<!--        </div>-->
+
+        <div id="windo">
+            <p>本平台以在线健康社区大数据为基础，使用多种特征集和
+                多个领域词典抽取医生医疗服务评价数据，通过使用自然语言处理技术和机器学习算法来
+                判断医生医疗服务指标取值，通过结果评估来验证方法的科学准确性，最终实现医生医疗
+                服务指标取值的智能、客观的识别与更新。</p>
+            <div><button id="windo_btn" type="button" class="btn btn-primary btn-lg">Read over</button></div>
+    </div>
+<!--    <script src="{% static 'js/fifa16.js' %}" type="module"></script>-->
+<!--    <script src="http://d3js.org/d3.v3.min.js"></script>-->
+
+    <script>
+
+        let $l = $("#left");
+<!--        if ($l.html() == "Bar charts"){-->
+<!--                let old_url = window.location.pathname ;-->
+<!--                let param = window.location.search;-->
+<!--                let new_param = param.replace(/radar/g, "bar");-->
+<!--                let new_url = old_url + new_param;-->
+<!--                //window.location.href = new_url;-->
+<!--                //window.open(new_url, "_self");-->
+<!--                $l.attr('onclick', "window.location.href='"+new_url+"'")-->
+<!--                window.event.returnvalue=false;-->
+<!--        }-->
+<!--        else{-->
+<!--            let old_url = window.location.pathname ;-->
+<!--            let param = window.location.search;-->
+<!--            let new_param = param.replace(/bar/g, "radar");-->
+<!--            let new_url = old_url + new_param;-->
+<!--            //window.location.href = new_url;-->
+<!--            //window.open(new_url, "_self");\-->
+<!--            $l.attr('onclick', "window.location.href='"+new_url+"'")\-->
+<!--            window.event.returnvalue=false;-->
+<!--        }-->
+
+        $l.click(function (){
+            if ($(this).html() == "Radar charts"){
+                let old_url = window.location.pathname;
+                let param = window.location.search;
+                let new_param = param.replace(/bar/g, "radar");
+                window.location.href = old_url + new_param;
+                //window.open(new_url, "_self");
+                window.event.returnvalue=false;
+            }
+            else{
+                let old_url = window.location.pathname;
+                let param = window.location.search;
+                let new_param = param.replace(/radar/g, "bar");
+                window.location.href = old_url + new_param;
+                //window.open(new_url, "_self");
+                window.event.returnvalue=false;
+            }
+
+        })
+    </script>
+
+<!--        // 雷达图-->
+<!-- <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>-->
+    <script>
+        let left1=document.getElementById("left")
+        let right1=document.getElementById("right")
+        let windo_btn1 = document.getElementById('windo_btn');
+        let windo1 = document.getElementById('windo');
+        left1.onclick=function(){
+            window.location.href='';
+        }
+        right1.onclick=function(){
+            windo1.style = "display:block"
+        }
+        windo_btn1.onclick = function () {
+            windo1.style = "display:none"
+        }
+
+    </script>
+    <script type="module">
+     // 雷达图
+    import Chart from "{% static 'js/chart.js' %}";
+
+d3.csv("{% static 'data/data16.csv' %}", function(d){
+    return {
+        subject: d.subject,
+        person1: +d.person1,
+        person2: +d.person2
+    };
+}).then(function(data){
+    /* ----------------------------配置参数------------------------  */
+    const chart=new Chart();
+    // $("#picture").html(tem)
+    // const chart=d3.select(".picture").append(tem);
+    // const chart = new Chart();
+    const config = {
+        margins: {top: 80, left: 80, bottom: 50, right: 80},
+        textColor: 'black',
+        title: '',
+        radius: 110,
+        animateDuration: 1000,
+        tickNum: 5,
+        axisfillColor: ['white','#ddd'],
+        axisStrokeColor: 'yellow',
+        pointsColor: 'white',
+        pointsSize: 3
+    }
+
+    chart.margins(config.margins);
+
+    /* ----------------------------尺度转换------------------------  */
+    chart.scaleRadius = d3.scaleLinear()
+                            .domain([0, 100])
+                            .range([0, config.radius])
+
+    /* ----------------------------渲染坐标轴------------------------  */
+    chart.renderAxes = function(){
+
+        // ----渲染背景多边形-----
+        const points = getPolygonPoints(data.length, config.radius, config.tickNum);
+
+        const axes = chart.body().append('g')
+                                .attr('class', 'axes')
+                                .attr('transform', 'translate(' + chart.getBodyWidth()/2 + ',' + chart.getBodyHeight()/2 + ')')
+                                .selectAll('axis')
+                                .data(points);
+
+              axes.enter()
+                    .append('polygon')
+                    .attr('class', 'axis')
+                  .merge(axes)
+                    .attr('points', (d) => d)
+                    .attr('fill', (d,i) => i%2 === 0?config.axisfillColor[0]:config.axisfillColor[1])
+                    .attr('stroke', config.axisStrokeColor);
+
+              axes.exit()
+                    .remove();
+
+        // ----渲染对角线-----
+        const line = d3.line();
+
+        const outerPoints = getOuterPoints(points[0]);
+
+        const lines = d3.select('.axes')
+                    .selectAll('.line')
+                    .data(outerPoints);
+
+              lines.enter()
+                     .append('path')
+                     .attr('class', 'line')
+                     .merge(lines)
+                     .attr('d', (d) => {
+                         return line([
+                             [0, 0],
+                             [d[0], d[1]]
+                         ]);
+                     })
+                     .attr('stroke', config.axisStrokeColor);
+
+                lines.exit()
+                     .remove();
+
+        //生成背景多边形的顶点
+        function getPolygonPoints(vertexNum, outerRadius, tickNum){
+            const points = [];
+            let polygon;
+
+            if (vertexNum < 3) return points;
+
+            const anglePiece = Math.PI * 2 / vertexNum;
+            const radiusReduce = outerRadius / tickNum;
+
+            for (let r=outerRadius; r>0; r-=radiusReduce){
+                polygon = [];
+
+                for (let i=0; i<vertexNum; i++){
+                    polygon.push(
+                        Math.sin(i * anglePiece) * r + ',' +Math.cos(i * anglePiece) * r
+                    );
+                }
+
+                points.push(polygon.join(' '));
+            }
+
+            return points;
+        }
+
+        //得到最外层多边形的顶点
+        function getOuterPoints(outerPoints){
+             const points = outerPoints.split(' ').map((d) => d.split(','));
+             return points;
+        }
+    }
+
+    /* ----------------------------渲染文本标签------------------------  */
+    chart.renderText = function(){
+
+        const texts = d3.select('.axes')
+                        .selectAll('.label')
+                        .data(data);
+
+              texts.enter()
+                      .append('text')
+                      .attr('class', 'label')
+                   .merge(texts)
+                      .attr('x', (d,i) => Math.sin(i * Math.PI * 2 / data.length) * (config.radius + 20))
+                      .attr('y', (d,i) => Math.cos(i * Math.PI * 2 / data.length) * (config.radius + 20))
+                      .attr('text-anchor', (d,i) => computeTextAnchor(data,i))
+                      .attr('dy', 6.5)       //由于text-anchor属性在垂向上对齐文字底部，故需要使其对齐文字中部
+                      .text((d) => d.subject)
+                      .attr("fill","white");
+
+        function computeTextAnchor(data, i){
+            if (data.length < 3) return;
+
+            const angle = i * 360 / data.length;
+
+            if ( angle === 0 || Math.abs(angle - 180) < 0.01 ){
+                return 'middle';
+            }else if (angle > 180){
+                return 'end'
+            }else{
+                return 'start'
+            }
+        }
+
+    }
+
+    /* ----------------------------渲染数据多边形------------------------  */
+    chart.renderPolygons = function(){
+        const newData = handleData(data);
+
+        const polygons = chart.body().selectAll('.polygons')
+                                .data(newData);
+
+              polygons.enter()
+                        .append('g')
+                        .attr('class', (d) => 'g-' + d.person)
+                        .attr('transform', 'translate(' + chart.getBodyWidth()/2 + ',' + chart.getBodyHeight()/2 + ')')
+                        .append('polygon')
+                        .attr('class', 'polygon')
+                    .merge(polygons)
+                        .attr('fill', 'none')
+                        .attr('stroke', (d,i) => chart._colors(i))
+                        .attr('stroke-width', '2')
+                        .attr('points', (d,i) => {
+                            const miniPolygon = [];
+                            d.forEach(() => {
+                                miniPolygon.push("0,0")
+                            });
+                            return miniPolygon.join(' ');
+                        })
+                        .transition().duration(config.animateDuration)
+                        .attr('points', generatePolygons);
+
+              polygons.exit()
+                        .remove();
+
+
+        //处理数据，转化数据结构，方便渲染
+        function handleData(data){
+            const newData = [];
+            Object.keys(data[0]).forEach((key) => {
+                if (key !== 'subject'){
+                    const item = [];
+                    item.person = key;
+                    newData.push(item);
+                }
+            });
+            data.forEach((d) => {
+                newData.forEach((item,i) => {
+                    item.push([d.subject, d['person' + (i+1)]]);
+                });
+            });
+            return newData;
+        }
+
+        //计算多边形的顶点并生成顶点圆圈
+        function generatePolygons(d,index){
+            const points = [];
+            const anglePiece = Math.PI * 2 / d.length;
+            d.forEach((item,i) => {
+                const x = Math.sin(i * anglePiece ) * chart.scaleRadius(item[1]);
+                const y = Math.cos(i * anglePiece) * chart.scaleRadius(item[1]);
+                //添加交点圆圈
+                d3.select('.g-' + d.person)
+                    .append('circle')
+                    .attr('class', 'point-' + d.person)
+                    .attr('fill', config.pointsColor)
+                    .attr('stroke', chart._colors(index))
+                    .attr('cx', 0)
+                    .attr('cy', 0)
+                    .attr('r', config.pointsSize)
+                    .transition().duration(config.animateDuration)
+                    .attr('cx', x)
+                    .attr('cy', y)
+
+                points.push(x + ',' + y);
+            });
+
+            return points.join(' ');
+        }
+
+    }
+
+    /* ----------------------------渲染图标题------------------------  */
+    chart.renderTitle = function(){
+        chart.svg().append('text')
+                .classed('title', true)
+                .attr('x', chart.width()/2)
+                .attr('y', 0)
+                .attr('dy', '2em')
+                .text(config.title)
+                // .attr('fill', config.textColor)
+                .attr('fill', "white")
+                .attr('text-anchor', 'middle')
+                // .attr('stroke', config.textColor);
+                .attr('stroke', "white");
+    }
+    var t1,t2;
+    chart.renderLegend = function(){
+        t1 = chart.svg().append("rect")
+                .classed('legend',true)
+                .attr('x',chart.width()*3/4)
+                .attr('y', chart.height()/4-50)
+                .attr("width",15)
+                .attr("height",15)
+                .attr("fill",chart._colors(0))
+        chart.svg().append('text')
+                .classed('title', true)
+                .attr('x', chart.width()*3/4+40+20)
+                .attr('y', chart.height()/4-36)
+                // .attr('dy', '2em')
+                .text("{{doctors.0.doctorName}}(左)")
+                // .attr('fill', config.textColor)
+                .attr('text-anchor', 'middle')
+                .attr("fill","white")
+                // .attr('stroke', config.textColor);
+        var dy=20;
+        t2 = chart.svg().append("rect")
+                .classed('legend',true)
+                .attr('x',chart.width()*3/4)
+                .attr('y', chart.height()/4-50+dy)
+                .attr("width",15)
+                .attr("height",15)
+                .attr("fill",chart._colors(1))
+        chart.svg().append('text')
+                .classed('title', true)
+                .attr('x', chart.width()*3/4+40+20)
+                .attr('y', chart.height()/4-36+dy)
+                // .attr('dy', '2em')
+                .text("{{doctors.1.doctorName}}(右)")
+                // .attr('fill', config.textColor)
+                .attr('text-anchor', 'middle')
+                .attr("fill","white")
+                // .attr('stroke', config.textColor);
+
+    }
+    var flag=true,flag2=true;
+    chart.clickLegend = function(){
+        t1.on('click',function(){
+        //50以下是灰色    50~70绿色  70到80黄色  80~90橙色 90以上红色
+                var color=["gray","green","orange","orangeRed","red"];
+                var data08Cris=[92,90,93,33,80,78]
+                // var color08Cris=["red","red","orange","gray","yellow","yellow"]
+                var color08Cris=[];
+                for(var i=0;i<data08Cris.length;i++){
+                    if(data08Cris[i]>=90){
+                        color08Cris[i]="red";
+                    }else if(data08Cris[i]>=80){
+                        color08Cris[i]="orangeRed";
+                    }else if(data08Cris[i]>=70){
+                        color08Cris[i]="orange";
+                    }else if(data08Cris[i]>=50){
+                        color08Cris[i]="green";
+                    }else color08Cris[i]="gray";
+                }
+                var X=[],Y=[];
+                for(var i=0;i<data.length;i++){
+                    X[i]=Math.sin(i * Math.PI * 2 / data.length) * (config.radius + 20)+chart.getBodyWidth()/2+70;
+                    Y[i]=Math.cos(i * Math.PI * 2 / data.length) * (config.radius + 20)+chart.getBodyHeight()/2+70;
+                    // console.log(X[i]); console.log(Y[i]);
+                }
+                //设置偏移量
+                var dx=[0,40,40,0,-40,-40];
+                var dy=[20,0,0,-20,0,0];
+                if(flag){
+                    for(var i=0;i<data.length;i++){
+                        chart.svg()
+                        .append('rect')
+                        .classed('tip1', true)
+                        .attr('x', X[i]+dx[i])
+                        .attr('y', Y[i]+dy[i])
+                        .attr("width",20)
+                        .attr("height",20)
+                        .attr("fill",color08Cris[i])
+                        .append("text")
+                        .attr("fill","white")
+                        .text(data08Cris[i]);
+                        chart.svg()
+                        .append('text')
+                        .classed('tip1',true)
+                        .attr('x',X[i]+dx[i]+1)
+                        .attr('y',Y[i]+dy[i]+15)
+                        .attr("fill","white")
+                        .text(data08Cris[i]);
+                    }
+                    flag=false;
+                }
+                else{
+                    d3.selectAll('.tip1').remove();
+                    flag=true;
+                }
+
+            })
+        t2.on('click',function(){
+            //50以下是灰色    50~70绿色  70到80黄色  80~90橙色 90以上红色
+            var color=["gray","green","orange","orangeRed","red"];
+            var data08Messi=[92,95,88,24,86,62]
+            // var color08Messi=["red","red","orange","gray","yellow","yellow"]
+            var color08Messi=[];
+            for(var i=0;i<data08Messi.length;i++){
+                if(data08Messi[i]>=90){
+                    color08Messi[i]="red";
+                }else if(data08Messi[i]>=80){
+                    color08Messi[i]="orangeRed";
+                }else if(data08Messi[i]>=70){
+                    color08Messi[i]="orange";
+                }else if(data08Messi[i]>=50){
+                    color08Messi[i]="green";
+                }else color08Messi[i]="gray";
+            }
+            var X=[],Y=[];
+            for(var i=0;i<data.length;i++){
+                X[i]=Math.sin(i * Math.PI * 2 / data.length) * (config.radius + 20)+chart.getBodyWidth()/2+70;
+                Y[i]=Math.cos(i * Math.PI * 2 / data.length) * (config.radius + 20)+chart.getBodyHeight()/2+70;
+                // console.log(X[i]); console.log(Y[i]);
+            }
+            //设置偏移量
+            var dx=[0,60,60,0,-60,-60];
+            var dy=[40,0,0,-40,0,0];
+            if(flag2){
+                for(var i=0;i<data.length;i++){
+                    chart.svg()
+                    .append('rect')
+                    .classed('tip2', true)
+                    .attr('x', X[i]+dx[i])
+                    .attr('y', Y[i]+dy[i])
+                    .attr("width",20)
+                    .attr("height",20)
+                    .attr("fill",color08Messi[i])
+                    .append("text")
+                    .attr("fill","white")
+                    .text(data08Messi[i]);
+                    chart.svg()
+                    .append('text')
+                    .classed('tip2',true)
+                    .attr('x',X[i]+dx[i]+1)
+                    .attr('y',Y[i]+dy[i]+15)
+                    .attr("fill","white")
+                    .text(data08Messi[i]);
+                }
+                flag2=false;
+            }
+            else{
+                d3.selectAll('.tip2').remove();
+                flag2=true;
+            }
+        })
+    }
+    /* ----------------------------绑定鼠标交互事件------------------------  */
+    chart.addMouseOn = function(){
+        d3.selectAll('.polygon')
+            .on('mouseover', function(d){
+                const e = d3.event;
+                const position = d3.mouse(chart.svg().node());
+
+                d3.select(e.target)
+                    .attr('stroke-width', '4');
+                if(d.person=="person1"){
+                    chart.svg()
+                    .append('text')
+                    .classed('name', true)
+                    .attr('x', position[0]+5)
+                    .attr('y', position[1])
+                    .attr('fill', config.textColor)
+                    // .text("nihao");
+                    .text("{{doctors.0.doctorName}}(左)");
+                }else{
+                    chart.svg()
+                    .append('text')
+                    .classed('name', true)
+                    .attr('x', position[0]+5)
+                    .attr('y', position[1])
+                    .attr('fill', config.textColor)
+                    // .text("nihao");
+                    .text("{{doctors.1.doctorName}}(右)");
+                }
+            })
+            .on('mouseleave', function(){
+                const e = d3.event;
+                d3.select(e.target)
+                    .attr('stroke-width', '2');
+                d3.selectAll('.name').remove();
+                // d3.select('.tip').remove();
+            })
+    }
+
+    chart.render = function(){
+        chart.renderTitle();
+        chart.renderAxes();
+        chart.renderText();
+        chart.renderPolygons();
+        chart.addMouseOn();
+        chart.renderLegend();
+        chart.clickLegend();
+    }
+    chart.renderChart();
+});
+
+    </script>
+<!--    // 柱形图，对比-->
+<!--    <script>-->
+
+<!--    var svg = d3.select("svg"),-->
+<!--        margin = {top: 20, right: 20, bottom: 30, left: 40},-->
+<!--        width = +svg.attr("width") - margin.left - margin.right,-->
+<!--        height = +svg.attr("height") - margin.top - margin.bottom,-->
+<!--        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");-->
+
+<!--    var x0 = d3.scaleBand()-->
+<!--        .rangeRound([0, width])-->
+<!--        .paddingInner(0.1);-->
+
+<!--    var x1 = d3.scaleBand()-->
+<!--        .padding(0.05);-->
+
+<!--    var y = d3.scaleLinear()-->
+<!--        .rangeRound([height, 0]);-->
+
+<!--    var z = d3.scaleOrdinal()-->
+<!--        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);-->
+
+<!--    d3.csv("{% static 'data/data16.csv' %}", function(d, i, columns) {-->
+<!--      for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];-->
+<!--      return d;-->
+<!--    }, function(error, data) {-->
+<!--      if (error) throw error;-->
+
+<!--      var keys = data.columns.slice(1);-->
+
+<!--      x0.domain(data.map(function(d) { return d.subject; }));-->
+<!--      x1.domain(keys).rangeRound([0, x0.bandwidth()]);-->
+<!--      y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();-->
+
+<!--      g.append("g")-->
+<!--        .selectAll("g")-->
+<!--        .data(data)-->
+<!--        .enter().append("g")-->
+<!--          .attr("transform", function(d) { return "translate(" + x0(d.subject) + ",0)"; })-->
+<!--        .selectAll("rect")-->
+<!--        .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })-->
+<!--        .enter().append("rect")-->
+<!--          .attr("x", function(d) { return x1(d.key); })-->
+<!--          .attr("y", function(d) { return y(d.value); })-->
+<!--          .attr("width", x1.bandwidth())-->
+<!--          .attr("height", function(d) { return height - y(d.value); })-->
+<!--          .attr("fill", function(d) { return z(d.key); });-->
+
+<!--      g.append("g")-->
+<!--          .attr("class", "axis")-->
+<!--          .attr("transform", "translate(0," + height + ")")-->
+<!--          .call(d3.axisBottom(x0));-->
+
+<!--      g.append("g")-->
+<!--          .attr("class", "axis")-->
+<!--          .call(d3.axisLeft(y).ticks(null, "s"))-->
+<!--        .append("text")-->
+<!--          .attr("x", 2)-->
+<!--          .attr("y", y(y.ticks().pop()) + 0.5)-->
+<!--          .attr("dy", "0.32em")-->
+<!--          .attr("fill", "#000")-->
+<!--          .attr("font-weight", "bold")-->
+<!--          .attr("text-anchor", "start")-->
+<!--          .text("Population");-->
+
+<!--      var legend = g.append("g")-->
+<!--          .attr("font-family", "sans-serif")-->
+<!--          .attr("font-size", 10)-->
+<!--          .attr("text-anchor", "end")-->
+<!--        .selectAll("g")-->
+<!--        .data(keys.slice().reverse())-->
+<!--        .enter().append("g")-->
+<!--          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });-->
+
+<!--      legend.append("rect")-->
+<!--          .attr("x", width - 19)-->
+<!--          .attr("width", 19)-->
+<!--          .attr("height", 19)-->
+<!--          .attr("fill", z);-->
+
+<!--      legend.append("text")-->
+<!--          .attr("x", width - 24)-->
+<!--          .attr("y", 9.5)-->
+<!--          .attr("dy", "0.32em")-->
+<!--          .text(function(d) { return d; });-->
+<!--    });-->
+
+<!--</script>-->
+<!--    // 堆叠柱形图，对比-->
+<script>
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 60, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var x = d3.scaleBand()
+    .rangeRound([0, width])
+    .padding(0.1)
+    .align(0.1);
+
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
+
+var z = d3.scaleOrdinal()
+    .range(["#d0743c", "#ff8c00", "#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
+
+var stack = d3.stack()
+    .offset(d3.stackOffsetExpand);
+
+d3.csv("{% static 'data/data16.csv' %}", type, function(error, data) {
+  if (error) throw error;
+
+  data.sort(function(a, b) { return b[data.columns[1]] / b.total - a[data.columns[1]] / a.total; });
+
+  x.domain(data.map(function(d) { return d.subject; }));
+  z.domain(data.columns.slice(1));
+
+  var serie = g.selectAll(".serie")
+    .data(stack.keys(data.columns.slice(1))(data))
+    .enter().append("g")
+      .attr("class", "serie")
+      .attr("fill", function(d) { return z(d.key); });
+
+  serie.selectAll("rect")
+    .data(function(d) { return d; })
+    .enter().append("rect")
+      .attr("x", function(d) { return x(d.data.subject); })
+      .attr("y", function(d) { return y(d[1]); })
+      .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+      .attr("width", x.bandwidth());
+
+  g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"));
+
+  g.selectAll("text")
+      .attr("fill", "#ddd")
+
+  var legend = serie.append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d) { var d = d[d.length - 1]; return "translate(" + (x(d.data.subject) + x.bandwidth()) + "," + ((y(d[0]) + y(d[1])) / 2) + ")"; });
+
+  legend.append("line")
+      .attr("x1", -6)
+      .attr("x2", 6)
+      .attr("stroke", "#000");
+
+  legend.append("text")
+      .attr("x", 9)
+      .attr("dy", "0.35em")
+      .attr("fill", "#ddd")
+      .style("font", "18px sans-serif")
+      .text(function(d) { return d.key; });
+});
+
+function type(d, i, columns) {
+  for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+  d.total = t;
+  return d;
+}
+
+</script>
+</body>
+
+</html>
