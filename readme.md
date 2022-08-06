@@ -162,8 +162,12 @@ recommend(df_csv, text_shiti,df)
 ![contents](img_3.png)
 
 ### 6.3. 医生推荐
+
 ![contents](img4.png)
 
+
 ### 6.4. 医生服务指标评价体系
-![contents](img5.jpg)
-![contents](img6.jpg)
+![contents](img_4.png)
+![contents](img_5.png)
+
+
