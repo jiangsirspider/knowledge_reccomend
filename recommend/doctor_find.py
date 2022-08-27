@@ -1,6 +1,6 @@
 import pandas as pd
 import sys
-sys.path.append(r'D:\杂物\研究生\比赛竞赛\基于知识图谱的医生推荐系统\recommend')
+sys.path.append(r'')
 def find(id, df):
     # df =pd.read_csv('./haodaifu/doctors_gaoxueya.csv')
     doctor_infomation = df[df['doctor_id'] == id]

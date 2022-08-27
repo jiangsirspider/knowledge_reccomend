@@ -4,7 +4,7 @@
 
 import os
 import sys
-sys.path.append(r'D:\杂物\研究生\比赛竞赛\基于知识图谱的医生推荐系统\entity_extract')
+sys.path.append(r'')
 import flask
 import numpy as np
 import torch

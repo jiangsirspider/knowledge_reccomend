@@ -1,6 +1,6 @@
 ##推荐前n个问诊的方式
 import sys
-sys.path.append(r'D:\杂物\研究生\比赛竞赛\基于知识图谱的医生推荐系统\recommend')
+sys.path.append(r'')
 import numpy as np
 import re
 import time

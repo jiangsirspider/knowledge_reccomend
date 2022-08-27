@@ -9,10 +9,10 @@ from py2neo import Graph
 import pandas as pd
 from config import *
 
-graph = Graph(host="127.0.0.1",
-              http_port=7474,
-              user="neo4j",
-              password="jiangsir")
+graph = Graph(host="",
+              http_port="",
+              user="",
+              password="")
 
 
 def slot_recognizer(text):
